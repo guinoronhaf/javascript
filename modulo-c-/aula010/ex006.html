@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos DOM</title>
+    <style>
+        #area {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.5em;
+            background-color: red;
+            color: white;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="area" clicar() onmouseenter="entrou()" onmouseout="sair()"</div>
+        Interaja...
+    </div>
+
+    <script>
+        var a = window.document.querySelector('#area') /*percebe-se que utilizar o "window" é opcional.*/
+
+        /*colocando essa variável fora das funções, ela passa a servir para todas as três.*/
+        a.addEventListener('click', clicar)
+        a.addEventListener('mouseenter', entrou)
+        a.addEventListener('mouseout', sair)
+
+        function clicar() {
+            a.innerText = 'Clicou!'
+            a.style.background = 'yellow'
+            a.style.color = 'blue'
+        }
+
+        function entrou() {
+            a.innerText = 'Entrou!'
+            a.style.background = 'green'
+            a.style.color = 'white'
+        }
+
+        function sair() {
+            a.innerText = 'Saiu.'
+            a.style.background = 'red'
+            a.style.color = 'white'
+        }
+    </script>
+</body>
+</html>
