@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DETRAN</title>
+</head>
+<body>
+    <h1>Sistema de multas</h1>
+    <label for="ivel">Velocidade do carro: </label>
+    <input type="number" name="vel" id="ivel"> km/h
+    <input type="button" value="Verificar" onclick="ver()">
+    <div id="res">
+
+    </div>
+
+    <script>
+        function ver() {
+            var vel = Number(window.document.querySelector('#ivel').value)
+            var res = window.document.querySelector('#res')
+            res.innerHTML = `<p>Sua velocidade é de ${vel}km/h.</p>`
+            if (vel >= 80) {
+               res.innerHTML += '<p>Limite de velocidade excedido!</p>' //+ pra ele não substituir o texto que já tinha
+            } else {
+                res.innerHTML += '<p>Você está dentro do limite de velocidade.</p>'
+            }
+        }
+    </script>
+</body>
+</html>
