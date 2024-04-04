@@ -23,7 +23,7 @@ main {
     text-align: center;
     background-color: white;
     border-radius: 10px;
-    width: 500px;
+    width: 80vw;
     height: 300px;
     margin: auto;
 }
@@ -33,7 +33,7 @@ main {
 }
 
 main > img {
-    width: 50%;
+    width: 300px;
     height: 80%;
     border-radius: 50%;
 }
