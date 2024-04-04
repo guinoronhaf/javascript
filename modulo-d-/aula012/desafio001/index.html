@@ -3,20 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos/style.css">
     <title>Hora do dia</title>
 </head>
-<body>
+<body onload="carregar()"> <!--tem que colocar isso pq senão as coisas da função não vão acontecer nunca.-->
     <header>
         <h1>Hora do Dia</h1>
     </header>
     <main>
-        <p>
-
+        <p id="horas">
+            Aqui vai aparecer a mensagem.
         </p>
-        <img src="" alt="">
+        <img id="img" src="imagens/dia.jpg" alt="">
     </main>
     <footer>
-        <p></p>
+        <p>Guilherme Noronha</p>
     </footer>
+
+    <script src="codigo.js"></script>
 </body>
 </html>
