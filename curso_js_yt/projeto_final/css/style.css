@@ -1,0 +1,130 @@
+@charset "UTF-8";
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body, html {
+    font-family: Helvetica;
+    background-image: linear-gradient(to right, #E65763, #34073D);
+    color: white;
+    text-align: center;
+    padding-top: 30px;
+}
+
+#tasks-container {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#tasks-header {
+    margin-top: 40px;
+}
+
+#add-task-form {
+    position: relative;
+}
+
+#add-task-form input {
+    box-sizing: border-box;
+    border: 1px solid #34073D;
+    background-color: white;
+    color: #34073D;
+    padding: 15px;
+    font-size: 18px;
+    width: 100%;
+}
+
+#add-task-form input::placeholder {
+    color: #34073D;
+}
+
+#add-task-form input:focus {
+    outline: none; /*tira a borda o input quando clica*/
+}
+
+#add-btn {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #34073D;
+    cursor: pointer;
+    transition: .3s;
+    width: 60px;
+    height: 53px;
+    top: 0px;
+    right: 0px;
+    padding-top: 3px;
+}
+
+#add-btn i {
+    font-size: 25px;
+}
+
+#add-btn:hover {
+    background-color: #34073D;
+    color: white;
+}
+
+#task-list {
+    list-style-type: none;
+    padding-left: 0px;
+}
+
+#task-list li {
+    text-align: left;
+    height: 50px;
+    line-height: 50px; /*deixar esses dois valores iguais garantem que o texto fique sempre no centro do elemento ao qual está submetido*/
+    position: relative;
+    border-bottom: 3px solid #34073D;
+    background-color: white;
+    color: #34073D;
+    margin-bottom: 10px;
+    padding-left: 15px;
+    transition: .3s;
+    font-weight: bold;
+}
+
+#task-list li span {
+    font-size: 18px;
+}
+
+#task-list i {
+    position: absolute;
+    top: 0;
+    height: 47px;
+    transition: .3s;
+    cursor: pointer;
+    width: 30px;
+    padding: 5px;
+}
+
+#done-btn {
+    right: 40px;
+}
+
+#done-btn:hover {
+    color: white;
+    background-color: #09E01B;
+}
+
+#remove-btn {
+    right: 0px;
+}
+
+#remove-btn:hover {
+    color: white;
+    background-color: #EB0927;
+}
+
+.hide {
+    display: none;
+}
+
+.done {
+    background-color: #34073D;
+    color: white;
+    text-decoration: line-through;
+}
