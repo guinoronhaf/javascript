@@ -4,7 +4,7 @@ function solution(str) {
     if (strSplit.length % 2 != 0) {
         strSplit.push('_')
     }
-    for (let i = 0; i < strSplit.length; i +=2) {
+    for (let i = 0; i < strSplit.length; i += 2) {
         array.push(`${strSplit[i]}${strSplit[i + 1]}`)
     }
     return array
