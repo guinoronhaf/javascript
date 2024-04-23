@@ -5,4 +5,4 @@ function arrayDiff(a, b) {
     return c
 }
 
-console.log(arrayDiff([1, 2, 3, 5, 6, 7, 8, 9, 0], [1, 0, 3, 4]))
+console.log(arrayDiff([3, 6, 7, 8, 12, 3], [4, 3, 12, 11, 5]))
