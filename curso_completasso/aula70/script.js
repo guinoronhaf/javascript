@@ -6,6 +6,9 @@ const ton = document.querySelector('#ton')
 const tlimpar = document.querySelector('#tlimpar')
 const tcpy = document.querySelector('#tcpy')
 const teste = document.querySelector('#teste')
+const calc_aba = document.querySelector('#calc_aba')
+const calc = document.querySelector('#calc')
+const img_aba_calc = document.querySelector('#img_aba_calc')
 
 let sinal = false
 let decimal = false
@@ -65,4 +68,13 @@ tcpy.addEventListener("click", () => {
     // teste.select() // quando clicar no cpy, seleciona o que tiver no input
     // teste.setSelectionRange(0, 999999) // mobile
     // navigator.clipboard.writeText(teste.value)
+})
+
+calc_aba.addEventListener("click", () => {
+    calc.classList.toggle('calc_exibir')
+    if (calc.classList.contains('calc_exibir')) {
+        img_aba_calc.setAttribute('src', 'setaesquerda.svg')
+    } else {
+        img_aba_calc.setAttribute('src', 'setadireita.svg')
+    }
 })
