@@ -5,9 +5,9 @@ let promise = new Promise((resolve, reject) => { // 1o parâmetro == deu certo/ 
     let tempo = 3000
     setTimeout(() => {
         if (resultado) {
-            resolve = 'deu tudo certo'
+            resolve('deu tudo certo')
         } else {
-            reject = 'deu tudo errado'
+            reject('deu tudo errado')
         }
     }, tempo)
 })
