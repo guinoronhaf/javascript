@@ -63,3 +63,7 @@ input[type="number"], #num_objetos {
     position: absolute;
     border-radius: 50%;
 }
+
+.bola:hover {
+    border: 3px solid red;
+}
