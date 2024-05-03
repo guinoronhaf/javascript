@@ -1,5 +1,5 @@
-import { cursos, carros } from "../cursos.js"; //tem que colocar a extensão ".js" senão dá erro no console
+import { cursos, carros } from "../cursos.js"
 
-console.log('testando o servidor');
-console.log(cursos);
+console.log('servidor rodando')
+console.log(cursos)
 console.log(carros)

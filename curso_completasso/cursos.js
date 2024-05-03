@@ -1,4 +1,4 @@
-const cursos = ['python', 'javascript', 'php', 'c++', 'c#', 'java', 'ruby', 'c']
-const carros = ['golf', 'polo', 'uno', 'celta', 'onix', 'argo', 'up', 'mobi']
+const cursos = ['javascript', 'html', 'css', 'adruino', 'raspberry', 'c++', 'python', 'java', 'c#']
+const carros = ['polo', 't-cross', 'golf', 'onix', 'cruze', 'argo', 'cronos']
 
 export {cursos, carros}
