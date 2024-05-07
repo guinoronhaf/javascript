@@ -1,9 +1,9 @@
 import { contatos } from '../bancoContatos.js'
 import c from '../contatos.js'
+// import { apagar } from '../contatos.js'
 
 const listaContatos = document.querySelector('#listaContatos')
 const btn_gravar = document.querySelector('#btn_gravar')
-
 
 btn_gravar.addEventListener("click", (e) => {
     const cont = {
@@ -12,6 +12,4 @@ btn_gravar.addEventListener("click", (e) => {
         email: document.querySelector('#f_email').value
     }
     c.addContato(cont, listaContatos)
-    console.log(c.getTodosContatos())
-    console.log(c.getTodosbtn())
 })

@@ -1,6 +1,6 @@
 import { contatos } from './bancoContatos.js'
 
-const btnApagarArray = []
+let btnApagarArray = []
 
 const criarBtnApagar = () => {
     const btnApagar = document.createElement('div')
@@ -8,6 +8,7 @@ const criarBtnApagar = () => {
     btnApagar.innerHTML = '<i class="bi bi-trash3"></i>'
     btnApagar.setAttribute('class', 'btnApagar')
     btnApagarArray.push(btnApagar)
+    return btnApagar
 }
 
 let contato = {
@@ -37,9 +38,18 @@ let contato = {
             div.appendChild(p_nome)
             div.appendChild(p_telefone)
             div.appendChild(p_email)
-            criarBtnApagar()
-            div.appendChild(btnApagarArray[pos])
+            const btn = criarBtnApagar()
+            div.appendChild(btn)
             destinoDOM.appendChild(div)
+            div.lastChild.addEventListener("click", (evt) => {
+                let c = this.getTodosContatos()
+                // console.log(c[pos])
+                c.splice(pos, 1)
+                console.log(c)
+            })
+
+            // this.apagarCadaBox(div, this.getTodosContatos())
+
         })
         // const p_nome = document.createElement('p')
         // p_nome.innerHTML = novoContato.nome
@@ -51,10 +61,10 @@ let contato = {
         // div.appendChild(p_telefone)
         // div.appendChild(p_email)
         // destinoDOM.appendChild(div)
-    }, 
+    },
     getTodosbtn: function() {
         return btnApagarArray
-    }
+    }, 
 }
 
 export default contato
