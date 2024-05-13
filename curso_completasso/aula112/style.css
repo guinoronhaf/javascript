@@ -1,0 +1,31 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    border: none;
+}
+
+.info {
+    display: flex;
+    justify-content: space-around;
+}
+
+.quadrado {
+    position: absolute;
+    display: flex;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+}
+
+#q1 {
+    background-color: #f00;
+    top: 20px; /*posy*/
+    left: 100px; /*posx*/
+}
+
+#q2 {
+    background-color: #00f;
+    top: 150px;
+    left: 300px;
+}
