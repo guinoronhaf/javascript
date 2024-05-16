@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula126</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div style="width: 500px; height: 500px;">
+        <canvas id="grafico1"></canvas>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('grafico1');
+
+        let labelsX = ['Brasil', 'EUA', 'Japão', 'Itália'];
+        let valores = [10, 20, 30, 40];
+      
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: labelsX,
+            datasets: [{
+              label: '# of Votes',
+              data: valores,
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      </script>
+</body>
+</html>

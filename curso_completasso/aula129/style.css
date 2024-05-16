@@ -1,0 +1,64 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    border: none;
+}
+
+#divTimer {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+}
+
+#timer {
+    background-color: #333;
+    color: #0f0;
+    display: flex;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 40px;
+    padding: 10px 20px;
+    justify-content: center;
+    width: inherit;
+    border-radius: 10px;
+    border: 5px solid #888;
+}
+
+#botoes {
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn {
+    cursor: pointer;
+    background-color: #ccc;
+    width: 100%;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#parciais {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    width: 250px;
+    height: auto;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 10px;
+    gap: 10px;
+}
+
+#parciais > h1 {
+    font-size: 1.2em;
+}
+
+.parcial {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 50px;
+    background-color: #ccc;
+    border-radius: 10px;
+}

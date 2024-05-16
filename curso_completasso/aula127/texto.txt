@@ -1,0 +1,4 @@
+{
+	"clube": "Vasco da Gama", 
+	"curso": "JavaScript"
+}

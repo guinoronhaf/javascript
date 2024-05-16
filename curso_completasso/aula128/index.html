@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula128</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div style="width: 500px; height: 500px;">
+        <canvas id="grafico1"></canvas>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('grafico1');
+
+        let labelsX = ['Disponibilidade', 'Qualidade', 'Performance'];
+        let valores = [];
+        
+        let grafico1 = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labelsX,
+                datasets: [{
+                    label: '# of Votes',
+                    data: valores,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        
+        // fetch(endpoint)
+        // .then(res => res.json())
+        // .then((data) => {
+            //     valores[0] = data.disponibilidade;
+            //     valores[1] = data.qualidade;
+            //     valores[2] = data.performance;
+            //     grafico1.update(); // tem que dar o update no gráfico; por isso é bom colocar ele dentro de uma variável.
+            // }).catch(err => consolelog(`Erro: ${err}`))
+            
+            async function getData() {
+                
+            const endpoint = 'https://018f21ce-c1bf-4434-9f84-539e902351b4-00-18hauvh45t3sz.worf.replit.dev/';
+            const res = await fetch(endpoint)
+            .catch(err => console.log(`ERRO: ${err}`));
+            const data = await res.json();
+            valores[0] = data.disponibilidade;
+            valores[1] = data.qualidade;
+            valores[2] = data.performance;
+            grafico1.update();
+
+        }
+
+        let intervalo = setInterval(getData, 2000) //no setInterval, não precisa colocar "getData()", apenas getData.
+    </script>
+</body>
+</html>
