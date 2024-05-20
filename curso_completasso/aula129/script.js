@@ -1,3 +1,5 @@
+import { Cxmsg } from "../aula135/cxmsg.js";
+
 const timer = document.querySelector('#timer');
 const btnIniciar = document.querySelector('#btn_iniciar');
 const btnParar = document.querySelector('#btn_parar');
@@ -40,6 +42,8 @@ btnZerar.addEventListener("click", () => {
     [...document.querySelectorAll('#parciais > div')].map((el) => {
         el.remove();
     })
+
+    Cxmsg.mostrarCaixa('Tempo e parciais zerados.', 'Caso queira retomar o processo, basta reiniciar o cronômetro.');
 });
 
 btnParcial.addEventListener("click", () => {

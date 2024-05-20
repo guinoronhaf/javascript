@@ -1,0 +1,17 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    border: none;
+}
+
+.btn_mostrarcxmsg {
+    padding: 10px 40px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.hide {
+    background-color: rgb(235, 111, 10);
+}
