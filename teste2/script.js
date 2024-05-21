@@ -1,11 +1,13 @@
 const output = document.querySelector('#output');
 const iRange = document.querySelector('#i_range');
 const range = document.querySelector('#range');
-const num = document.querySelector('#range');
+const num = document.querySelector('#num');
 const simb = document.querySelector('#simb');
 const maiu = document.querySelector('#maiu');
 const minu = document.querySelector('#minu');
 const gerar = document.querySelector('#gerar');
+const copiar = document.querySelector('#copiar');
+const copiado = document.querySelector('#copiado');
 
 range.innerHTML = iRange.value;
 
@@ -13,43 +15,43 @@ iRange.addEventListener("input", (evt) => {
     range.innerHTML = evt.target.value;
 });
 
-const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-const simbolos = ['!', '@', '#', '$', '%', '&', '*', '_'];
+const createArrays = () => {
+    let array = [];
 
-const caracteres = Array.from(Array(26)).map((_, i) => i + 97);
-const lowerCaseCaracteres = caracteres.map((item) => String.fromCharCode(item));
-const upperCaseCaracteres = lowerCaseCaracteres.map((item) => item.toUpperCase());
-
-gerar.addEventListener("click", () => {
-    generatePassword(
-        num.checked,
-        simb.checked, 
-        maiu.checked, 
-        minu.checked,
-        iRange.value
-    );
-});
-
-const generatePassword = (
-    hasNumbers, 
-    hasSymbols,
-    hasMaiusculas, 
-    hasMinusculas,
-    lenght
-) => {
-    const newArray = [
-        ...(hasNumbers?numbers:[]), 
-        ...(hasSymbols?simbolos:[]), 
-        ...(hasMaiusculas?upperCaseCaracteres:[]), 
-        ...(hasMinusculas?lowerCaseCaracteres:[]), 
-    ];
-
-    let password = '';
-
-    for (let i = 1; i <= lenght; i++) {
-        const randomCharacter = Math.floor(Math.random() * newArray.length);
-        password += newArray[randomCharacter];
+    if (num.checked) {
+        array.push('0123456789');
+    }
+    if (simb.checked) {
+        array.push('!@#4%&*_');
+    }
+    if (maiu.checked) {
+        array.push('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
+    }
+    if (minu.checked) {
+        array.push('abcdefghijklmnopqrstuvwxyz');
     }
 
-    output.value = password;
+    return array
 };
+
+const generatePassword = () => {
+    let password = '';
+    const arr = createArrays();
+    for (let i = 0; i <= iRange.value; i++) {
+        let firstPosition = arr[Math.floor(Math.random() * arr.length)];
+        let randomC = firstPosition[Math.floor(Math.random() * firstPosition.length)];
+        password += randomC;
+    }
+    return password;
+}
+
+gerar.addEventListener("click", () => {
+    createArrays();
+    output.value = generatePassword();
+});
+
+copiar.addEventListener("click", () => {
+    navigator.clipboard.writeText(output.value);
+    copiado.classList.toggle('hide');
+    copiado.classList.add('animation');
+})

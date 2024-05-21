@@ -1,0 +1,40 @@
+.copiado {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 100px;
+    margin-top: 30px;
+    background-color: grey;
+    color: white;
+}
+
+@keyframes popup {
+    0% {
+        filter: opacity(0);
+    }
+    
+    /* 25% {
+        filter: opacity(.25);
+    } */
+    
+    50% {
+        filter: opacity(1);
+    }
+    
+    /* 75% {
+        filter: opacity(.75);
+    } */
+    
+    100% {
+        filter: opacity(0);
+    }
+}
+
+.hide {
+    display: none;
+}
+
+.animation {
+    animation: popup 3s forwards ease-in-out;  
+}
