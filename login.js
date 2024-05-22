@@ -7,13 +7,15 @@ class Login {
     static callbackOk = null;
     static callbackNaoOk = null;
     static config = {
-        cor: null, //048
-        img: null, //'vasco.png'
-        endpoint: null, //https://fd58e49b-3397-4567-8b01-d56c56ea570d-00-1iriv13w4s6w7.picard.replit.dev
+        cor: "048", //048
+        img: "vasco.png", 
     };
     
-    static login = (callbackOk, callbackNaoOk, config) => {
-        this.config = config;
+    static login = (callbackOk, callbackNaoOk, config=null) => {
+        if (config) {
+            this.config = config;
+        };
+
         this.callbackOk = () => {callbackOk()};
         this.callbackNaoOk = () => {callbackNaoOk()};
         
@@ -122,7 +124,7 @@ class Login {
         const mat = document.querySelector('#f_username').value;
         const pas = document.querySelector('#f_senha').value;
         
-        const endpoint = `${this.config.endpoint}/?matricula=${mat}&senha=${pas}`;
+        const endpoint = `https://fd58e49b-3397-4567-8b01-d56c56ea570d-00-1iriv13w4s6w7.picard.replit.dev/?matricula=${mat}&senha=${pas}`;
         
         fetch(endpoint)
         .then(res => res.json())
@@ -181,4 +183,4 @@ class Login {
 // }).listen(8080);
 
 // Exemplo de chamada:
-// https://loginvv1.guilhermenoron3.repl.co/?matricula=123&senha=321
+// // https://loginvv1.guilhermenoron3.repl.co/?matricula=123&senha=321

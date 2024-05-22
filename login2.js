@@ -8,15 +8,11 @@ class Login {
     static callbackNaoOk = null;
     static config = {
         cor: null, //048
-        img: null, //'vasco.png'
-        endpoint: null //https://fd58e49b-3397-4567-8b01-d56c56ea570d-00-1iriv13w4s6w7.picard.replit.dev
+        img: null, // vasco.png
+        endpoint: null // https://fd58e49b-3397-4567-8b01-d56c56ea570d-00-1iriv13w4s6w7.picard.replit.dev
     };
     
     static login = (callbackOk, callbackNaoOk, config) => {
-        sessionStorage.setItem('logado', 'false');
-        sessionStorage.setItem('matLogado', '');
-        sessionStorage.setItem('nomeLogado', '');
-        sessionStorage.setItem('acessoLogado', '');
         this.config = config;
         this.callbackOk = () => {callbackOk()};
         this.callbackNaoOk = () => {callbackNaoOk()};
@@ -104,10 +100,6 @@ class Login {
         btnCancelar.setAttribute('id', 'btn_cancelar');
         btnCancelar.innerHTML = 'Cancelar';
         btnCancelar.addEventListener("click", () => {
-            sessionStorage.setItem('logado', 'false');
-            sessionStorage.setItem('matLogado', '');
-            sessionStorage.setItem('nomeLogado', '');
-            sessionStorage.setItem('acessoLogado', '');
             this.fechar();
         });
         botoesLogin.appendChild(btnCancelar);
@@ -137,16 +129,16 @@ class Login {
         .then(data => {
             if (data) {
                 sessionStorage.setItem('logado', 'true');
-                sessionStorage.setItem('matLogado', mat);
-                sessionStorage.setItem('nomeLogado', data.nome);
-                sessionStorage.setItem('acessoLogado', data.acesso);
+                sessionStorage.setItem('matlogado', mat);
+                sessionStorage.setItem('nomelogado', data.nome);
+                sessionStorage.setItem('acessologado', data.acesso);
                 this.callbackOk();
                 this.fechar();
             } else {
                 sessionStorage.setItem('logado', 'false');
-                sessionStorage.setItem('matLogado', '');
-                sessionStorage.setItem('nomeLogado', '');
-                sessionStorage.setItem('acessoLogado', '');
+                sessionStorage.setItem('matlogado', '');
+                sessionStorage.setItem('nomelogado', '');
+                sessionStorage.setItem('acessologado', '');
                 this.callbackNaoOk();
             };
         });
@@ -189,4 +181,4 @@ class Login {
 // }).listen(8080);
 
 // Exemplo de chamada:
-// https://loginvv1.guilhermenoron3.repl.co/?matricula=123&senha=321
+// // https://loginvv1.guilhermenoron3.repl.co/?matricula=123&senha=321
