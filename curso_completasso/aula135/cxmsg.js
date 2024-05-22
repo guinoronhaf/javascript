@@ -24,7 +24,8 @@ class Cxmsg {
             "left: 0px;"+
             "width: 100%;"+
             "height: 100vh;"+
-            "background-color: rgba(0, 0, 0, 0.7);";
+            "background-color: rgba(0, 0, 0, 0.7);"+
+            "z-index: 9999999999999";
         this.divMsg.setAttribute('id', 'divMsg');
         this.divMsg.setAttribute('style', estiloDivMsg);
         this.destino.prepend(this.divMsg);
@@ -92,6 +93,7 @@ class Cxmsg {
             btnOk.innerHTML = 'OK';
             btnOk.addEventListener("click", () => {
                 this.ocultarCaixa();
+                this.comandoSn();
             });
             rodapeCxMsg.appendChild(btnOk);
         } else if (this.tipo == "sn") {
