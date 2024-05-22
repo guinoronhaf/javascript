@@ -22,7 +22,7 @@ const callbackNaoOk = () => {
 
 const configLogin = {
     cor: "048", 
-    imagem: 'vasco.png', 
+    img: 'vasco.png', 
     enpoint: 'https://fd58e49b-3397-4567-8b01-d56c56ea570d-00-1iriv13w4s6w7.picard.replit.dev'
 };
 
