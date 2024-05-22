@@ -8,7 +8,7 @@ class Login {
     static callbackNaoOk = null;
     static config = {
         cor: null, //048
-        img: "vasco.png", 
+        img: null, //'vasco.png'
         endpoint: null, //https://fd58e49b-3397-4567-8b01-d56c56ea570d-00-1iriv13w4s6w7.picard.replit.dev
     };
     
