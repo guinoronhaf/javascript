@@ -7,17 +7,13 @@ class Login {
     static callbackOk = null;
     static callbackNaoOk = null;
     static config = {
-        cor: "048",
-        img: "vasco.png" 
+        cor: null, //048
+        img: "vasco.png", 
+        endpoint: null, //https://fd58e49b-3397-4567-8b01-d56c56ea570d-00-1iriv13w4s6w7.picard.replit.dev
     };
-    static endpoint = "https://fd58e49b-3397-4567-8b01-d56c56ea570d-00-1iriv13w4s6w7.picard.replit.dev/";
-    // https://fd58e49b-3397-4567-8b01-d56c56ea570d-00-1iriv13w4s6w7.picard.replit.dev/?matricula=123&senha=321
     
-    static login = (callbackOk, callbackNaoOk, config=null) => {
-        if (config) {
-            this.config = config;
-        };
-
+    static login = (callbackOk, callbackNaoOk, config) => {
+        this.config = config;
         this.callbackOk = () => {callbackOk()};
         this.callbackNaoOk = () => {callbackNaoOk()};
         
@@ -126,23 +122,23 @@ class Login {
         const mat = document.querySelector('#f_username').value;
         const pas = document.querySelector('#f_senha').value;
         
-        const endpoint = `https://fd58e49b-3397-4567-8b01-d56c56ea570d-00-1iriv13w4s6w7.picard.replit.dev/?matricula=${mat}&senha=${pas}`;
+        const endpoint = `${this.config.endpoint}/?matricula=${mat}&senha=${pas}`;
         
         fetch(endpoint)
         .then(res => res.json())
         .then(data => {
             if (data) {
-                this.logado = true;
-                this.matlogado = mat;
-                this.nomelogado = data.nome;
-                this.acessologado = data.acesso;
+                sessionStorage.setItem('logado', 'true');
+                sessionStorage.setItem('matLogado', mat);
+                sessionStorage.setItem('nomeLogado', data.nome);
+                sessionStorage.setItem('acessoLogado', data.acesso);
                 this.callbackOk();
                 this.fechar();
             } else {
-                this.logado = false;
-                this.matlogado = null;
-                this.nomelogado = null;
-                this.acessologado = null;
+                sessionStorage.setItem('logado', 'false');
+                sessionStorage.setItem('matLogado', '');
+                sessionStorage.setItem('nomeLogado', '');
+                sessionStorage.setItem('acessoLogado', '');
                 this.callbackNaoOk();
             };
         });
@@ -157,4 +153,32 @@ class Login {
     };
 };
 
-// export {Login};
+/* EXEMPLO DE API */
+// API deverá retornar nome e acesso caso login seja efetuado com sucesso
+// API deverá retornar null caso login não seja efetuado
+
+// var http = require('http');
+// var url = require('url');
+// http.createServer(function(req, res) {
+//   res.setHeader('Access-Control-Allow-Origin', '*');
+//   res.writeHead(200, {'Content-Type': 'application/json'});
+
+//   let parametros = url.parse(req.url, true);
+
+//   let mat = parametros.query.matricula;
+//   let pas = parametros.query.senha;
+
+//   let dados = null;
+
+//   if (mat == "123" && pas == "321") {
+//     dados = {
+//       nome: "Vasco", 
+//       acesso: 10
+//     }
+//   }
+
+//   res.end(JSON.stringify(dados));
+// }).listen(8080);
+
+// Exemplo de chamada:
+// https://loginvv1.guilhermenoron3.repl.co/?matricula=123&senha=321

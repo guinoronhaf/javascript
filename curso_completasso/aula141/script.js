@@ -1,4 +1,3 @@
-import { Login } from "./login.js";
 import { Cxmsg } from "../aula135/cxmsg.js";
 
 const callbackOk = () => {
@@ -21,4 +20,10 @@ const callbackNaoOk = () => {
     Cxmsg.mostrarCaixa(config, 'Falha ao efetuar login.', 'Usuário ou senha inválidos.');
 };
 
-Login.login(callbackOk, callbackNaoOk);
+const configLogin = {
+    cor: "048", 
+    imagem: 'vasco.png', 
+    enpoint: 'https://fd58e49b-3397-4567-8b01-d56c56ea570d-00-1iriv13w4s6w7.picard.replit.dev'
+};
+
+Login.login(callbackOk, callbackNaoOk, config); //agora, pode-se utilizar os recurso de "login.js" normalmente; a única diferença é que agora os comandos desse arquivo estão num servidor online, podendo ser distribuídos tranquilamente (CDN).
