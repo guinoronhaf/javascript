@@ -146,11 +146,6 @@ class Login {
                 this.callbackNaoOk();
             };
         });
-        // if (mat == '123' && pas == '321') {
-        //     return true;
-        // } else {
-        //     return false;
-        // }
     };
 
     static fechar = () => {
