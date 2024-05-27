@@ -5,10 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="style.css">
+    <script src="gestao.js" type="module" defer></script>
 </head>
 <body>
+
+    <div id="fundopopup" class="fundopopup ocultar">
+        <div id="janelapopup" class="janelapopup">
+            <div id="titulopopup" class="titulopopup">Ediar Contato</div>
+            <div id="principalpopup" class="principalpopup">
+                <div class="campoForm">
+                    <label>ID</label>
+                    <input type="text" name="f_id" id="f_id" readonly style="cursor: not-allowed;">
+                </div>
+                <div class="campoForm">
+                    <label>Nome</label>
+                    <input type="text" name="f_nome" id="f_nome">
+                </div>
+                <div class="campoForm">
+                    <label>Telefone</label>
+                    <input type="text" name="f_telefone" id="f_telefone">
+                </div>
+                <div class="campoForm">
+                    <label>E-mail</label>
+                    <input type="text" name="f_email" id="f_email">
+                </div>
+                <div class="campoForm">
+                    <label>Data de nascimento</label>
+                    <input type="date" name="f_dtnasc" id="f_dtnasc">
+                </div>
+            </div>
+            <div id="rodapepopup" class="rodapepopup">
+                <button id="btn_gravar" class="btn_geral">Gravar</button>
+                <button id="btn_cancelar" class="btn_geral">Cancelar</button>
+            </div>
+        </div>
+    </div>
     
-    <h1>Gestão</h1>
+    <div id="resultado" class="resultado">
+        <div id="resultado_cabecalho" class="resultado_cabecalho">
+            <div class="c1">ID</div>
+            <div class="c2">Nome</div>
+            <div class="c3">Email</div>
+            <div class="c4">Telefone</div>
+            <div class="c5">Data de nasc.</div>
+            <div class="c6">Operações</div>
+        </div>
+        <div id="resultado_dados" class="resultado_dados"></div>
+            <!-- <div class="dados_linha">
+                <div class="c1">4</div>
+                <div class="c2">Vasco</div>
+                <div class="c3">vasco@vasco.com.br</div>
+                <div class="c4">483289498</div>
+                <div class="c5">21/08/1898</div>
+            </div>
+            <div class="dados_linha">
+                <div class="c1">4</div>
+                <div class="c2">Vasco</div>
+                <div class="c3">vasco@vasco.com.br</div>
+                <div class="c4">483289498</div>
+                <div class="c5">21/08/1898</div>
+            </div> -->
+        <!-- </div> -->
+    </div>
 
 </body>
 </html>

@@ -1,15 +1,15 @@
+const nome = document.querySelector('#f_nome');
+const celular = document.querySelector('#f_telefone');
+const email = document.querySelector('#f_email');
+const dtnasc = document.querySelector('#f_dtnasc');
+
 const addElemento = () => {
     
-    const nome = document.querySelector('#f_nome').value;
-    const celular = document.querySelector('#f_telefone').value;
-    const email = document.querySelector('#f_email').value;
-    const dtnasc = document.querySelector('#f_dtnasc').value;
-
     const dados = {
-        "nome": nome,
-        "celular": celular,
-        "email": email,
-        "dtnasc": dtnasc
+        "nome": nome.value,
+        "celular": celular.value,
+        "email": email.value,
+        "dtnasc": dtnasc.value
     };
 
     const cabecalho = {
@@ -21,20 +21,30 @@ const addElemento = () => {
     fetch(endpoint, cabecalho)
     .then(res => {
         if (res.status == 200) {
-            console.log('ok');
+            nome.value = '';
+            celular.value = '';
+            email.value = '';
+            dtnasc.value = '';
+            nome.focus();
         } else {
-            console.log('erro')
+            console.log('Erro.')
         }
     });
 
 };
 
+const reset = () => {
+    nome.value = '';
+    celular.value = '';
+    email.value = '';
+    dtnasc.value = '';
+    nome.focus();
+}
+
 document.querySelector('#btn_cancelar').addEventListener("click", () => {
-    document.querySelector('#novo').classList.add('ocultar');
+    reset();
 });
 
 document.querySelector('#btn_gravar').addEventListener("click", () => {
     addElemento();
-
-    document.querySelector('#novo').classList.add('ocultar');
 });
