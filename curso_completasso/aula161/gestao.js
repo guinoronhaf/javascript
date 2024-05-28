@@ -3,6 +3,10 @@ const fundoPopUp = document.querySelector('#fundopopup');
 const btnGravar = document.querySelector('#btn_gravar');
 const btnCancelar = document.querySelector('#btn_cancelar');
 
+fetch('gestao.php')
+.then(res => res.json())
+.then(data => console.log(data))
+
 const preencher = () => {
     
     dados.innerHTML = '';
