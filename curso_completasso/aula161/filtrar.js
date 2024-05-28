@@ -2,12 +2,14 @@ const dados = document.querySelector('#resultado_dados');
 const fundoPopUp = document.querySelector('#fundopopup');
 const btnGravar = document.querySelector('#btn_gravar');
 const btnCancelar = document.querySelector('#btn_cancelar');
+const filtroNome = document.querySelector('#f_filtronome');
+const btnFiltrar = document.querySelector('#filtrar');
 
-const preencher = () => {
+const preencher = (endpoint) => {
     
     dados.innerHTML = '';
 
-    const endpoint = `http://127.0.0.1:1880/contatos`;
+    // const endpoint = `http://127.0.0.1:1880/contatos`;
     
     fetch(endpoint)
     .then(res => res.json())
@@ -73,7 +75,7 @@ const preencher = () => {
 
 };
 
-preencher();
+preencher(`http://127.0.0.1:1880/contatos`);
 
 const deletar = (id) => {
 
@@ -82,7 +84,7 @@ const deletar = (id) => {
     fetch(endpoint)
     .then(res => {
         if (res.status == 200) { // sucesso
-            preencher();
+            preencher(`http://127.0.0.1:1880/contatos`);
         } else {
             alert('Erro ao remover elemento.')
         }
@@ -104,7 +106,7 @@ btnGravar.addEventListener("click", () => {
     .then(res => {
         if (res.status ==  200) {
             fundoPopUp.classList.add('ocultar');
-            preencher();
+            preencher(`http://127.0.0.1:1880/contatos`);
         } else {
             alert('Erro ao atualizar dados.')
         }
@@ -113,4 +115,12 @@ btnGravar.addEventListener("click", () => {
 
 btnCancelar.addEventListener("click", () => {
     fundoPopUp.classList.add('ocultar');
+});
+
+btnFiltrar.addEventListener("click", () => {
+    if (filtroNome.value == '') {
+        preencher(`http://127.0.0.1:1880/contatos`);
+    } else {
+        preencher(`http://127.0.0.1:1880/filtrar/${filtroNome.value}`);
+    }
 });
