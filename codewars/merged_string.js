@@ -55,16 +55,9 @@
 // console.log(ss.join(''))
 
 function isMerge(s, part1, part2) {
-    let sSplit = s.split('')
-    const check = part1.split('').map((el, pos) => {
-        return sSplit.splice(sSplit.indexOf(el), 1)
-    })
-    if (check.join('') == part1 && sSplit.join('') == part2 || check.join('') == part1 && sSplit.reverse().join('') == part2 || check.reverse().join('') == part1 && sSplit.join('') == part2) {
-        return true
-    } else {
-        return false
-    }
-}
+    part1 = part1.concat(part2);
+    part1 = part1.replace(/ /g, '').split('').sort().join('');
+    s = s.replace(/ /g, '').split('').sort().join('');
 
-console.log(isMerge('xcyc', 'xc', 'yc'))
-
+    return s === part1 ? true:false;
+};
