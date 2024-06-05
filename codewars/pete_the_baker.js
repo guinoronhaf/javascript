@@ -4,7 +4,7 @@ function cakes(recipe, available) {
 
     for (var item in recipe) {
         available.hasOwnProperty(item)?quantity.push(Math.floor(available[item]/recipe[item])):quantity=[0];
-    }
+    };
 
     return quantity.sort()[0];
     
