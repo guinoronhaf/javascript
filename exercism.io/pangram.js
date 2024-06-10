@@ -12,4 +12,4 @@ const isPangram = (word) => {
     return count >= 26?true:false;
 };
 
-console.log(isPangram('five boxing wizards jump quickly at it'))
+console.log(isPangram('five boxing wizards jump quickly at it'));
