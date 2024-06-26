@@ -11,7 +11,68 @@
 </head>
 <body>
     
-    <h1>Colaboradores</h1>
+    <div id="topoJanela" class="topoJanela">
+        <div></div>
+        <div>Colaboradores</div>
+        <div>
+            <img src="../imgs/add.svg" alt="Adicionar colaboradores" title="Adicionar colaboradores" id="btn_mainoper" class="btn_mainoper">
+        </div>
+    </div>
+
+    <div id="novoColaborador" class="popup ocultarPopup">
+        <div class="janelaPopup">
+            <div class="tituloPopup">
+                <div>Novo colaborador</div>
+                <img src="../imgs/close.svg" alt="Fechar janela" title="Fechar janela" class="btn_jenelaoper" id="btn_fechar">
+            </div>
+            <div class="corpoPopup">
+                <div class="campoForm">
+                    <label for="f_nome">Nome do(a) colaborador(a):</label>
+                    <input type="text" name="f_nome" id="f_nome">
+                </div>
+                <div class="campoForm">
+                    <label for="f_tipoColab">Tipo:</label>
+                    <select name="f_tipoColab" id="f_tipoColab">
+                        <option>teste</option>
+                    </select>
+                </div>
+                <div class="campoForm">
+                    <label for="f_status">Status:</label>
+                    <select name="f_status" id="f_status">
+                        <option value="A">Ativo</option>
+                        <option value="I">Inativo</option>
+                    </select>
+                </div>
+                <div class="campoForm">
+                    <label for="f_nome">Telefones:</label>
+                    <input type="text" name="f_nome" id="f_nome">
+                </div>
+            </div>
+            <div class="rodapePopup">
+                <button id="btn_gravar" class="btn_comandoPopup">Gravar</button>
+                <button id="btn_cancelar" class="btn_comandoPopup">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="grid" class="grid">
+        <div id="tituloGrid" class="tituloGrid">
+            <div class="colunaTituloGrid c1">ID</div>
+            <div class="colunaTituloGrid c2">Nome</div>
+            <div class="colunaTituloGrid c3">Tipo</div>
+            <div class="colunaTituloGrid c4">Status</div>
+            <div class="colunaTituloGrid c5">Operações</div>
+        </div>
+        <div id="dadosGrid" class="dadosGrid">
+            <!-- <div class="linhaGrid">
+                <div class="colunaLinhaGrid c1">ID</div>
+                <div class="colunaLinhaGrid c2">Nome</div>
+                <div class="colunaLinhaGrid c3">Tipo</div>
+                <div class="colunaLinhaGrid c4">Status</div>
+                <div class="colunaLinhaGrid c5">Operações</div>
+            </div> -->
+        </div>
+    </div>
 
 </body>
 </html>

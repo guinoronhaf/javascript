@@ -1,6 +1,16 @@
+:root {
+    --azulPrincipal: #005288;
+    --fundoJanela: #ccc;
+}
+
 * {
     margin: 0px;
     padding: 0px;
+    /* box-sizing: border-box; */
+}
+
+body {
+    overflow: hidden;
 }
 
 .menuPrincipal {
@@ -49,4 +59,173 @@
     color: #fff;
 }
 
+.principal {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    height: 100vh;
+}
 
+.fprincipal {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* FORMATAÇÃO DE GRIDS */
+
+.grid {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.tituloGrid {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--azulPrincipal);
+    color: #fff;
+}
+
+.colunaTituloGrid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dadosGrid {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.linhaGrid {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.colunaLinhaGrid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/*************************************************/
+
+/* TOPO DA JANELA */
+.topoJanela {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn_mainoper {
+    background-color: var(--azulPrincipal);
+    border-radius: 50%;
+    cursor: pointer;
+    transition-duration: .2s;
+    margin: 10px 0px;
+}
+
+.btn_mainoper:hover {
+    opacity: .6;
+}
+
+/*******************************/
+
+/* JANELA NOVO */
+
+.popup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, .7);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100vh;
+    transition: all .3s ease-in-out;
+}
+
+.janelaPopup {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 50%;
+}
+
+.tituloPopup {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    background-color: var(--azulPrincipal);
+    padding: 5px;
+    border-radius: 5px 5px 0px 0px;
+    width: 100%;
+}
+
+.corpoPopup {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: var(--fundoJanela);
+    padding: 5px;
+    width: 100%;
+}
+
+.campoForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.campoForm > input, .campoForm > select {
+    padding: 5px;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+}
+
+.rodapePopup {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    background-color: var(--azulPrincipal);
+    border-radius: 0px 0px 5px 5px;
+    padding: 5px;
+    width: 100%;
+}
+
+.btn_jenelaoper {
+    cursor: pointer;
+}
+
+.btn_comandoPopup {
+    background-color: #012d4b;
+    color: #fff;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.ocultarPopup {
+    opacity: 0 !important;
+    z-index: -1;
+    transition: all .3s ease-in-out;
+}
