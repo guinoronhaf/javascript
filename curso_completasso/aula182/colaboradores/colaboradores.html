@@ -32,9 +32,7 @@
                 </div>
                 <div class="campoForm">
                     <label for="f_tipoColab">Tipo:</label>
-                    <select name="f_tipoColab" id="f_tipoColab">
-                        <option>teste</option>
-                    </select>
+                    <select name="f_tipoColab" id="f_tipoColab"></select>
                 </div>
                 <div class="campoForm">
                     <label for="f_status">Status:</label>
@@ -44,8 +42,21 @@
                     </select>
                 </div>
                 <div class="campoForm">
-                    <label for="f_nome">Telefones:</label>
-                    <input type="text" name="f_nome" id="f_nome">
+                    <label for="f_foto">Foto do(a) colaborador(a:)</label>
+                    <input type="file" name="f_foto" id="f_foto" accept="image/png, image/jpeg, image/jpg">
+                </div>
+                <div class="campoForm2">
+                    <img src="#" alt="" id="img_foto" class="img_foto">
+                </div>
+                <div class="campoForm">
+                    <label for="f_tel">Telefones:</label>
+                    <input type="text" name="f_tel" id="f_tel">
+                    <div id="telefones" class="telefones">
+                        <!-- <div class="tel">
+                            <div class="numTel">(31)88888888</div>
+                            <img class="delTel" src="../imgs/delete.svg" alt="Deletar número" title="Deletar número">
+                        </div> -->
+                    </div>
                 </div>
             </div>
             <div class="rodapePopup">
