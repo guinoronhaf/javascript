@@ -13,6 +13,8 @@ const fTel = document.querySelector('#f_tel');
 const fFoto = document.querySelector('#f_foto');
 const imgFoto = document.querySelector('#img_foto');
 
+const servidor = sessionStorage.getItem("servidorNodeRed");
+
 let modoJanela = "n"; // n => novo colaborador; e => editar
 let currentId = null;
 
@@ -40,7 +42,7 @@ const criarCxTelefone = num => {
 };
 
 const mostrarDadosGrid = () => {
-    const endpoint_todosColaboradores = `http://127.0.0.1:1880/todosusuarios`;
+    const endpoint_todosColaboradores = `${servidor}todosusuarios`;
     fetch(endpoint_todosColaboradores)
     .then(res => res.json()) 
     .then(data => {
@@ -190,8 +192,6 @@ btnGravar.addEventListener("click", () => {
                 alert('Erro ao cadastrar usuário');
             }
         })
-
-        novoColaborador.classList.add('ocultarPopup');
     } else if (modoJanela == "e") {
         let endpointDelete = `http://127.0.0.1:1880/deletartelefones/${currentId}`;
         fetch(endpointDelete, {
@@ -205,8 +205,44 @@ btnGravar.addEventListener("click", () => {
             }
         })
 
-        // let endpointUpdate = 
+        const tels = [...document.querySelectorAll('.numTel')];
+        let numTels = [];
+
+        tels.forEach(tel => {
+            numTels.push(tel.textContent);
+        });
+
+        const dados = {
+            s_nome_usuario:fNome.value,
+            n_tipousuario_tipousuario:fTipoColab.value,
+            c_status_usuario:fStatus.value,
+            numTelefones:numTels,
+            s_foto_usuario: imgFoto.getAttribute("src")
+        }
+
+        let endpointUpdate = `http://127.0.0.1:1880/updatecolab/${currentId}`;
+
+        fetch(endpointUpdate, {
+            method: 'POST',
+            body: JSON.stringify(dados)
+        })
+        .then(res => {
+            if (res.status == 200) {
+                alert('Atualizado');
+                fNome.value = '';
+                fTipoColab.value = '';
+                fStatus.value = '';
+                fFoto.value = '';
+                imgFoto.src = '#';
+                telefones.innerHTML = "";
+            } else {
+                alert('Erro ao atualizar usuário');
+            }
+        })
     }
+
+    novoColaborador.classList.add('ocultarPopup');
+    mostrarDadosGrid();
 });
 
 btnCancelar.addEventListener("click", () => {
