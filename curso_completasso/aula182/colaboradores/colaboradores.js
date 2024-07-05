@@ -12,11 +12,28 @@ const telefones = document.querySelector('#telefones');
 const fTel = document.querySelector('#f_tel');
 const fFoto = document.querySelector('#f_foto');
 const imgFoto = document.querySelector('#img_foto');
+const fFilt = document.querySelector('#f_filt');
 
 const servidor = sessionStorage.getItem("servidorNodeRed");
 
 let modoJanela = "n"; // n => novo colaborador; e => editar
 let currentId = null;
+
+fFilt.addEventListener("keyup", (e) => {
+    
+    const linhas = [...document.querySelectorAll('.linhaGrid')];
+    
+    let input = e.target.value, filtragem = input.toUpperCase();
+
+    linhas.forEach(l => {
+        if (l.children[1].innerHTML.toUpperCase().indexOf(filtragem) > -1) { // vai procurar o texto digitado em cada uma das linhas no Grid.
+            l.classList.remove('ocultarLinhaGrid');
+        } else {
+            l.classList.add('ocultarLinhaGrid');
+        }
+    })
+
+});
 
 const criarCxTelefone = num => {
     const tel = document.createElement('div');
@@ -76,7 +93,29 @@ const mostrarDadosGrid = () => {
             linhaGrid.appendChild(c5);
     
             const imgStatus = document.createElement('img');
-            imgStatus.setAttribute("src", "../imgs/on.svg");
+            const urlStatus = c4.textContent=="A"?"../imgs/on.svg":"../imgs/off.svg";
+            imgStatus.setAttribute("data-idcolab", e.n_usuario_usuario);
+            imgStatus.setAttribute("src", urlStatus);
+            imgStatus.addEventListener("click", (e) => {
+                const id = e.target.dataset.idcolab;
+                let status = e.target.parentNode.previousSibling.innerHTML;
+
+                const newStatus = status=="A"?"I":"A";
+
+                let endpoint = `${servidor}updatestatus/${id}/${newStatus}`;
+
+                fetch(endpoint, {
+                    method: 'POST'
+                }).then(res => {
+                    if (res.status == 200) {
+                        console.log('Status atualizado');
+                    } else {
+                        console.log('erro');
+                    }
+                })
+
+                mostrarDadosGrid();
+            });
             c5.appendChild(imgStatus);
     
             const imgEdit= document.createElement('img');
@@ -117,6 +156,35 @@ const mostrarDadosGrid = () => {
     
             const imgDelete = document.createElement('img');
             imgDelete.setAttribute("src", "../imgs/delete.svg");
+            imgDelete.addEventListener("click", (e) => {
+                const id = e.target.parentNode.parentNode.firstChild.innerHTML;
+                let endpointDelete = `${servidor}deletarcolab/${id}`;
+                fetch(endpointDelete, {
+                    method: 'DELETE'
+                })
+                .then(res => {
+                    if (res.status == 200) {
+                        console.log('Usuário removido');
+                    } else {
+                        console.log('Erro');
+                    }
+                })
+
+                endpointDelete = `${servidor}deletartelefones/${id}`;
+                fetch(endpointDelete, {
+                    method: 'DELETE'
+                })
+                .then(res => {
+                    if (res.status == 200) {
+                        console.log('ok')
+                    } else {
+                        console.log('erro')
+                    }
+                })
+
+                mostrarDadosGrid();
+            });
+
             imgEdit.setAttribute("id", "btnDelete");
             c5.appendChild(imgDelete);
     
@@ -181,7 +249,7 @@ btnGravar.addEventListener("click", () => {
         fetch(endpoint_novoColab, cabecalho)
         .then(res => {
             if (res.status == 200) {
-                alert('Novo usuário cadastrado');
+                console.log('Novo usuário cadastrado');
                 fNome.value = '';
                 fTipoColab.value = '';
                 fStatus.value = '';
@@ -192,6 +260,7 @@ btnGravar.addEventListener("click", () => {
                 alert('Erro ao cadastrar usuário');
             }
         })
+        mostrarDadosGrid();
     } else if (modoJanela == "e") {
         let endpointDelete = `http://127.0.0.1:1880/deletartelefones/${currentId}`;
         fetch(endpointDelete, {
@@ -228,7 +297,7 @@ btnGravar.addEventListener("click", () => {
         })
         .then(res => {
             if (res.status == 200) {
-                alert('Atualizado');
+                console.log('Atualizado');
                 fNome.value = '';
                 fTipoColab.value = '';
                 fStatus.value = '';
@@ -239,10 +308,10 @@ btnGravar.addEventListener("click", () => {
                 alert('Erro ao atualizar usuário');
             }
         })
+        mostrarDadosGrid();
     }
 
     novoColaborador.classList.add('ocultarPopup');
-    mostrarDadosGrid();
 });
 
 btnCancelar.addEventListener("click", () => {
