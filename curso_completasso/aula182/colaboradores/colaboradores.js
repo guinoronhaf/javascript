@@ -1,8 +1,9 @@
 const dadosGrid = document.querySelector('#dadosGrid');
-const btnAdd = document.querySelector('.btn_mainoper');
+const btnAdd = document.querySelector('#btn_mainoper');
 const tituloPopup = document.querySelector('#tituloPopup');
 const novoColaborador = document.querySelector('#novoColaborador');
 const btnFechar = document.querySelector('#btn_fechar');
+const btnFecharPesq = document.querySelector('#btn_fecharPesq');
 const btnGravar = document.querySelector('#btn_gravar');
 const btnCancelar = document.querySelector('#btn_cancelar');
 const fNome = document.querySelector('#f_nome');
@@ -13,6 +14,13 @@ const fTel = document.querySelector('#f_tel');
 const fFoto = document.querySelector('#f_foto');
 const imgFoto = document.querySelector('#img_foto');
 const fFilt = document.querySelector('#f_filt');
+const pesquisa = document.querySelector('#pesquisa');
+const btnSearch = document.querySelector('#btn_search');
+const btnPesq = document.querySelector('#btn_pesq');
+const btnMostrar = document.querySelector('#btn_mostrar');
+const fPesqId = document.querySelector('#f_pesqId');
+const fPesqNome = document.querySelector('#f_pesqNome');
+const fPesq = document.querySelector('#f_pesq');
 
 const servidor = sessionStorage.getItem("servidorNodeRed");
 
@@ -58,8 +66,8 @@ const criarCxTelefone = num => {
     telefones.appendChild(tel);
 };
 
-const mostrarDadosGrid = () => {
-    const endpoint_todosColaboradores = `${servidor}todosusuarios`;
+const mostrarDadosGrid = (endpoint) => {
+    const endpoint_todosColaboradores = `${servidor}${endpoint}`;
     fetch(endpoint_todosColaboradores)
     .then(res => res.json()) 
     .then(data => {
@@ -114,7 +122,7 @@ const mostrarDadosGrid = () => {
                     }
                 })
 
-                mostrarDadosGrid();
+                mostrarDadosGrid('todosusuarios');
             });
             c5.appendChild(imgStatus);
     
@@ -182,7 +190,7 @@ const mostrarDadosGrid = () => {
                     }
                 })
 
-                mostrarDadosGrid();
+                mostrarDadosGrid('todosusuarios');
             });
 
             imgEdit.setAttribute("id", "btnDelete");
@@ -193,7 +201,7 @@ const mostrarDadosGrid = () => {
     });
 };
 
-mostrarDadosGrid();
+mostrarDadosGrid('todosusuarios');
 
 const endpoint_tiposColab = `http://127.0.0.1:1880/tiposcolab`;
 fetch(endpoint_tiposColab)
@@ -208,6 +216,41 @@ fetch(endpoint_tiposColab)
     });
 })
 
+btnMostrar.addEventListener("click", () => {
+    mostrarDadosGrid('todosusuarios');
+});
+
+btnSearch.addEventListener("click", () => {
+    pesquisa.classList.remove('ocultarPopup');
+    fPesqId.checked = true;
+    fPesq.value = "";
+});
+
+fPesqId.addEventListener("click", () => {
+    fPesq.value = '';
+    fPesq.focus();
+});
+
+fPesqNome.addEventListener("click", () => {
+    fPesq.value = '';
+    fPesq.focus();
+});
+
+btnPesq.addEventListener("click", () => {
+    if (!fPesq.value) {
+        alert('Campo de pesquisa vazio.')
+        fPesq.focus();
+    } else {
+        const tipo = fPesqId.checked?fPesqId.value:fPesqNome.value;
+        const valor = fPesq.value;
+        
+        const endpoint = `pesquisacolab/${tipo}/${valor}`;
+        mostrarDadosGrid(endpoint);
+
+        pesquisa.classList.add('ocultarPopup');
+    }
+});
+
 btnAdd.addEventListener("click", () => {
     modoJanela = "n";
     fNome.value = "";
@@ -218,6 +261,10 @@ btnAdd.addEventListener("click", () => {
     telefones.innerHTML = "";
     tituloPopup.innerHTML = 'Novo(a) colaborador(a)';
     novoColaborador.classList.remove('ocultarPopup');
+});
+
+btnFecharPesq.addEventListener("click", () => {
+    pesquisa.classList.add('ocultarPopup');
 });
 
 btnFechar.addEventListener("click", () => {
@@ -260,7 +307,7 @@ btnGravar.addEventListener("click", () => {
                 alert('Erro ao cadastrar usuário');
             }
         })
-        mostrarDadosGrid();
+        mostrarDadosGrid('todosusuarios');
     } else if (modoJanela == "e") {
         let endpointDelete = `http://127.0.0.1:1880/deletartelefones/${currentId}`;
         fetch(endpointDelete, {
@@ -308,7 +355,7 @@ btnGravar.addEventListener("click", () => {
                 alert('Erro ao atualizar usuário');
             }
         })
-        mostrarDadosGrid();
+        mostrarDadosGrid('todosusuarios');
     }
 
     novoColaborador.classList.add('ocultarPopup');

@@ -15,6 +15,8 @@
         <div></div>
         <div>Colaboradores</div>
         <div>
+            <img src="../imgs/list.svg" alt="Adicionar colaboradores" title="Adicionar colaboradores" id="btn_mostrar" class="btn_mainoper">
+            <img src="../imgs/search.svg" alt="Adicionar colaboradores" title="Adicionar colaboradores" id="btn_search" class="btn_mainoper">
             <img src="../imgs/add.svg" alt="Adicionar colaboradores" title="Adicionar colaboradores" id="btn_mainoper" class="btn_mainoper">
         </div>
     </div>
@@ -23,6 +25,33 @@
         <div class="campoForm campoFiltragem">
             <label for="f_filt">Filtrar pelo nome do(a) colaborador(a):</label>
             <input type="text" name="f_filt" id="f_filt" class="inputFiltragem">
+        </div>
+    </div>
+
+    <div id="pesquisa" class="popup ocultarPopup">
+        <div class="janelaPopup">
+            <div class="tituloPopup">
+                <div id="tituloPopupPesquisar">Pesquisar colaborador(a)</div>
+                <img src="../imgs/close.svg" alt="Fechar janela" title="Fechar janela" class="btn_jenelaoper" id="btn_fecharPesq">
+            </div>
+            <div class="corpoPopup">
+                <div class="campoForm">
+                    <label>Tipo da pesquisa</label>
+                    <div class="campoRadio">
+                        <input type="radio" name="f_p" id="f_pesqId" value="id" checked>ID
+                    </div>
+                    <div class="campoRadio">
+                        <input type="radio" name="f_p" id="f_pesqNome" value="nome">Nome
+                    </div>
+                </div>
+
+                <div class="campoForm">
+                    <input type="text" id="f_pesq" name="f_pesq">
+                </div>
+            </div>
+            <div class="rodapePopup">
+                <button id="btn_pesq" class="btn_comandoPopup">Pesquisar</button>
+            </div>
         </div>
     </div>
 

@@ -225,6 +225,14 @@ body {
     margin-bottom: 5px;
 }
 
+.campoRadio {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 5px;
+}
+
 .campoFiltragem {
     width: 300px;
 }
