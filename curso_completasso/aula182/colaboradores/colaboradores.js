@@ -292,7 +292,7 @@ btnGravar.addEventListener("click", () => {
             method: 'POST',
             body: JSON.stringify(dados)
         };
-        const endpoint_novoColab = `http://127.0.0.1:1880/novocolab`;
+        const endpoint_novoColab = `${servidor}novocolab`;
         fetch(endpoint_novoColab, cabecalho)
         .then(res => {
             if (res.status == 200) {
@@ -309,7 +309,7 @@ btnGravar.addEventListener("click", () => {
         })
         mostrarDadosGrid('todosusuarios');
     } else if (modoJanela == "e") {
-        let endpointDelete = `http://127.0.0.1:1880/deletartelefones/${currentId}`;
+        let endpointDelete = `${servidor}deletartelefones/${currentId}`;
         fetch(endpointDelete, {
             method: 'DELETE'
         })
@@ -336,7 +336,7 @@ btnGravar.addEventListener("click", () => {
             s_foto_usuario: imgFoto.getAttribute("src")
         }
 
-        let endpointUpdate = `http://127.0.0.1:1880/updatecolab/${currentId}`;
+        let endpointUpdate = `${servidor}updatecolab/${currentId}`;
 
         fetch(endpointUpdate, {
             method: 'POST',
