@@ -1,3 +1,5 @@
+import { Cxmsg } from "../utils/cxmsg.js";
+
 const dadosGrid = document.querySelector('#dadosGrid');
 const btnAdd = document.querySelector('#btn_mainoper');
 const tituloPopup = document.querySelector('#tituloPopup');
@@ -238,7 +240,16 @@ fPesqNome.addEventListener("click", () => {
 
 btnPesq.addEventListener("click", () => {
     if (!fPesq.value) {
-        alert('Campo de pesquisa vazio.')
+        const config = {
+            titulo: 'teste',
+            texto: 'teste',
+            cor: '#00f',
+            comandoOk: null, 
+            comandoSim: null, 
+            comandoNao: null
+        };
+        Cxmsg.mostrar(config);
+        // alert('Campo de pesquisa vazio.')
         fPesq.focus();
     } else {
         const tipo = fPesqId.checked?fPesqId.value:fPesqNome.value;
