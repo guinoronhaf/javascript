@@ -349,6 +349,7 @@ body {
     justify-content: center;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.75);
+    z-index: 1000;
 }
 
 .cxmsg {
@@ -371,7 +372,7 @@ body {
     align-items: center;
     background-color: #aaa;
     color: black;
-    padding: 5px;
+    padding: 20px 5px;
 }
 
 .rodapeCxmsg {
@@ -381,10 +382,14 @@ body {
     border-radius: 0px 0px 10px 10px;
     padding: 5px;
     background-color: #008;
+    background-color: #555;
     color: #fff;
 }
 
 .btnFecharCxmsg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #f00;
     width: 20px;
     cursor: pointer;

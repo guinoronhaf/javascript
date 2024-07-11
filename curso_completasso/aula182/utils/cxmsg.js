@@ -16,7 +16,7 @@ class Cxmsg {
 
         const divFundo = document.createElement('div');
         divFundo.setAttribute("id", "cxmsgFundo");
-        divFundo.setAttribute("class", "cxmsgFundo ocultarPopup");
+        divFundo.setAttribute("class", "cxmsgFundo");
 
         const cxmsg = document.createElement('div');
         cxmsg.setAttribute("id", "cxmsg");
@@ -25,36 +25,81 @@ class Cxmsg {
         const titulo = document.createElement('div');
         titulo.setAttribute("id", "tituloCxmsg");
         titulo.setAttribute("class", "tituloCxmsg");
+        titulo.setAttribute("style", `background-color: ${config.cor} !important`);
 
         const pTitulo = document.createElement('p');
-        p.textContent = 'Título';
+        pTitulo.textContent = config.titulo;
         titulo.appendChild(pTitulo);
 
-        const imgFechar = document.createElement('img');
-        imgFechar.setAttribute("src", "../imgs/close.svg");
-        imgFechar.setAttribute("alt")
+        const imgFechar = document.createElement('p');
+        // imgFechar.setAttribute("src", "../imgs/close.svg");
+        // imgFechar.setAttribute("alt", "Fechar janela");
+        imgFechar.innerHTML = 'X';
+        imgFechar.setAttribute("id", "btnFechar");
+        imgFechar.setAttribute("class", "btnFecharCxmsg");
+        imgFechar.addEventListener("click", () => {
+            this.fechar();
+        });
+        titulo.appendChild(imgFechar);
 
-        alert(config.texto);
+        const corpo = document.createElement('div');
+        corpo.setAttribute("id", "corpoCxmsg");
+        corpo.setAttribute("class", "corpoCxmsg");
+
+        const pCorpo = document.createElement('p');
+        pCorpo.textContent = config.texto;
+        corpo.appendChild(pCorpo);
+
+        const rodape = document.createElement('div');
+        rodape.setAttribute("id", "rodapeCxmsg");
+        rodape.setAttribute("class", "rodapeCxmsg");
+
+        if (config.tipo == 'ok') {
+            const btnOk = document.createElement('button');
+            btnOk.setAttribute("id", "btnOkCxmsg");
+            btnOk.setAttribute("class", "btnCxmsg");
+            btnOk.innerHTML = 'Ok';
+            btnOk.addEventListener("click", () => {
+                config.ok();
+                this.fechar();
+            });
+            rodape.appendChild(btnOk);
+        } else {
+            const btnSim = document.createElement('button');
+            btnSim.setAttribute("id", "btnSimCxmsg");
+            btnSim.setAttribute("class", "btnCxmsg");
+            btnSim.innerHTML = 'Sim';
+            btnSim.addEventListener("click", () => {
+                config.sim();
+                this.fechar();
+            });
+
+            const btnNao = document.createElement('button');
+            btnNao.setAttribute("id", "btnNaoCxmsg");
+            btnNao.setAttribute("class", "btnCxmsg");
+            btnNao.innerHTML = 'Não';
+            btnNao.addEventListener("click", () => {
+                config.nao();
+                this.fechar();
+            });
+
+            rodape.appendChild(btnSim);
+            rodape.appendChild(btnNao);
+        }
+
+        cxmsg.appendChild(titulo);
+        cxmsg.appendChild(corpo);
+        cxmsg.appendChild(rodape);
+
+        divFundo.appendChild(cxmsg);
+
+        document.body.prepend(divFundo);
+    };
+
+    static fechar = () => {
+        document.querySelector('#cxmsgFundo').remove();
     };
 
 };
 
 export { Cxmsg };
-
-
-<div id="cxmsgFundo" class="cxmsgFundo ocultarPopup">
-        <div id="cxmsg" class="cxmsg">
-            <div id="tituloCxmsg" class="tituloCxmsg">
-                <p>Título</p>
-                <img src="../imgs/close.svg" alt="Fechar caixa de texto" id="btnFechar" class="btnFecharCxmsg">
-            </div>
-            <div id="corpoCxmsg" class="corpoCxmsg">
-                <p>Mensagem</p>
-            </div>
-            <div id="rodapeCxmsg" class="rodapeCxmsg">
-                <button id="btnOkCxmsg" class="btnCxmsg">Ok</button>
-                <button id="btnSimCxmsg" class="btnCxmsg">Sim</button>
-                <button id="btnNaoCxmsg" class="btnCxmsg">Não</button>
-            </div>
-        </div>
-</div>

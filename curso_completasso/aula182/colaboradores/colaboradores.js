@@ -241,15 +241,15 @@ fPesqNome.addEventListener("click", () => {
 btnPesq.addEventListener("click", () => {
     if (!fPesq.value) {
         const config = {
-            titulo: 'teste',
-            texto: 'teste',
+            titulo: 'Atenção',
+            texto: 'Digite nome ou ID do colaborador',
             cor: '#00f',
-            comandoOk: null, 
-            comandoSim: null, 
-            comandoNao: null
+            tipo: 'ok',
+            ok: () => {}, 
+            sim: () => {},
+            nao: () => {}
         };
         Cxmsg.mostrar(config);
-        // alert('Campo de pesquisa vazio.')
         fPesq.focus();
     } else {
         const tipo = fPesqId.checked?fPesqId.value:fPesqNome.value;
@@ -307,7 +307,15 @@ btnGravar.addEventListener("click", () => {
         fetch(endpoint_novoColab, cabecalho)
         .then(res => {
             if (res.status == 200) {
-                console.log('Novo usuário cadastrado');
+                Cxmsg.mostrar({
+                    titulo: 'Cadastramento de usuário(a)',
+                    texto: `Usuário(a) "${fNome.value}" castrado(a) com sucesso!`,
+                    cor: '#008',
+                    tipo: 'ok',
+                    ok: () => {}, 
+                    sim: () => {},
+                    nao: () => {}
+                })
                 fNome.value = '';
                 fTipoColab.value = '';
                 fStatus.value = '';
@@ -315,7 +323,14 @@ btnGravar.addEventListener("click", () => {
                 imgFoto.src = '#';
                 telefones.innerHTML = "";
             } else {
-                alert('Erro ao cadastrar usuário');
+                Cxmsg.mostrar({
+                    titulo: 'Erro',
+                    texto: 'Falhar ao realizar esta operação. Tente novamente mais tarde.',
+                    cor: '#f00',
+                    ok: () => {}, 
+                    sim: () => {},
+                    nao: () => {}
+                });
             }
         })
         mostrarDadosGrid('todosusuarios');
@@ -355,7 +370,15 @@ btnGravar.addEventListener("click", () => {
         })
         .then(res => {
             if (res.status == 200) {
-                console.log('Atualizado');
+                Cxmsg.mostrar({
+                    titulo: 'Atualização de usuário(a)',
+                    texto: 'Usuário(a) atualizado(a) com sucesso!',
+                    cor: '#008',
+                    tipo: 'ok',
+                    ok: () => {},
+                    sim: () => {},
+                    nao: () => {}
+                });
                 fNome.value = '';
                 fTipoColab.value = '';
                 fStatus.value = '';
@@ -363,7 +386,14 @@ btnGravar.addEventListener("click", () => {
                 imgFoto.src = '#';
                 telefones.innerHTML = "";
             } else {
-                alert('Erro ao atualizar usuário');
+                Cxmsg.mostrar({
+                    titulo: 'Erro',
+                    texto: 'Falhar ao realizar esta operação. Tente novamente mais tarde.',
+                    cor: '#f00',
+                    ok: () => {}, 
+                    sim: () => {},
+                    nao: () => {}
+                });
             }
         })
         mostrarDadosGrid('todosusuarios');
@@ -385,7 +415,14 @@ fTel.addEventListener("keyup", (e) => { //se fosse assim que apertasse a tecla, 
             e.target.value = '';
             e.target.focus();
         } else {
-            alert('Numero de telefone inválido');
+            Cxmsg.mostrar({
+                titulo: 'Erro',
+                texto: 'Número de telefone inválido',
+                cor: '#f00',
+                ok: () => {}, 
+                sim: () => {},
+                nao: () => {}
+            });
         }
     }
 });
