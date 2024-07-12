@@ -341,9 +341,24 @@ btnGravar.addEventListener("click", () => {
         })
         .then(res => {
             if (res.status == 200) {
-                console.log('deletado');
+               Cxmsg.mostrar({
+                titulo: 'Remoção de usuário(a)',
+                texto: 'Usuário(a) removido(a) com sucesso!',
+                cor: '#008',
+                tipo: 'ok',
+                ok: () => {},
+                sim: () => {},
+                nao: () => {},
+            })
             } else {
-                console.log('erro');
+                Cxmsg.mostrar({
+                    titulo: 'Erro',
+                    texto: 'Falhar ao realizar esta operação. Tente novamente mais tarde.',
+                    cor: '#f00',
+                    ok: () => {}, 
+                    sim: () => {},
+                    nao: () => {}
+                });
             }
         })
 
