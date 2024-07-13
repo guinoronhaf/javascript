@@ -80,22 +80,22 @@ const mostrarDadosGrid = (endpoint) => {
     
             const c1 = document.createElement('div');
             c1.setAttribute("class", "colunaLinhaGrid c1");
-            c1.textContent = e.n_usuario_usuario;
+            c1.textContent = e.n_pessoa_pessoa;
             linhaGrid.appendChild(c1);
     
             const c2 = document.createElement('div');
             c2.setAttribute("class", "colunaLinhaGrid c2");
-            c2.textContent = e.s_nome_usuario;
+            c2.textContent = e.s_nome_pessoa;
             linhaGrid.appendChild(c2);
     
             const c3 = document.createElement('div');
             c3.setAttribute("class", "colunaLinhaGrid c3");
-            c3.textContent = e.n_tipousuario_tipousuario;
+            c3.textContent = e.n_tipopessoa_tipopessoa;
             linhaGrid.appendChild(c3);
     
             const c4 = document.createElement('div');
             c4.setAttribute("class", "colunaLinhaGrid c4");
-            c4.textContent = e.c_status_usuario;
+            c4.textContent = e.c_status_pessoa;
             linhaGrid.appendChild(c4);
     
             const c5 = document.createElement('div');
@@ -104,12 +104,12 @@ const mostrarDadosGrid = (endpoint) => {
     
             const imgStatus = document.createElement('img');
             const urlStatus = c4.textContent=="A"?"../imgs/on.svg":"../imgs/off.svg";
-            imgStatus.setAttribute("data-idcolab", e.n_usuario_usuario);
+            imgStatus.setAttribute("data-idcolab", e.n_pessoa_pessoa);
             imgStatus.setAttribute("src", urlStatus);
             imgStatus.addEventListener("click", (e) => {
                 const id = e.target.dataset.idcolab;
                 let status = e.target.parentNode.previousSibling.innerHTML;
-
+            
                 const newStatus = status=="A"?"I":"A";
 
                 let endpoint = `${servidor}updatestatus/${id}/${newStatus}`;
@@ -123,12 +123,11 @@ const mostrarDadosGrid = (endpoint) => {
                         console.log('erro');
                     }
                 })
-
-                mostrarDadosGrid('todosusuarios');
             });
+
             c5.appendChild(imgStatus);
     
-            const imgEdit= document.createElement('img');
+            const imgEdit = document.createElement('img');
             imgEdit.setAttribute("src", "../imgs/edit.svg");
             imgEdit.setAttribute("id", "btnEdit");
             imgEdit.addEventListener("click", (e) => {
@@ -142,18 +141,18 @@ const mostrarDadosGrid = (endpoint) => {
                 modoJanela = "e";
                 const id = e.target.parentNode.parentNode.firstChild.innerHTML;
                 currentId = id;
-                let endpoint = `http://127.0.0.1:1880/todosusuarios/${id}`;
+                let endpoint = `${servidor}todapessoa/${id}`;
                 fetch(endpoint)
                 .then(res => res.json())
                 .then(data => {
-                    fNome.value = data[0].s_nome_usuario;
-                    fTipoColab.value = data[0].n_tipousuario_tipousuario;
-                    fStatus.value = data[0].c_status_usuario;
-                    imgFoto.setAttribute("src", data[0].s_foto_usuario);
+                    fNome.value = data[0].s_nome_pessoa;
+                    fTipoColab.value = data[0].n_tipopessoa_tipopessoa;
+                    fStatus.value = data[0].c_status_pessoa;
+                    imgFoto.setAttribute("src", data[0].s_foto_pessoa);
                     novoColaborador.classList.remove('ocultarPopup');
                 })
     
-                endpoint = `http://127.0.0.1:1880/telefone/${id}`;
+                endpoint = `${servidor}telefone/${id}`;
                 fetch(endpoint)
                 .then(res => res.json())
                 .then(data => {
@@ -192,34 +191,35 @@ const mostrarDadosGrid = (endpoint) => {
                     }
                 })
 
-                mostrarDadosGrid('todosusuarios');
+                mostrarDadosGrid('todapessoa');
             });
 
             imgEdit.setAttribute("id", "btnDelete");
+
             c5.appendChild(imgDelete);
     
             dadosGrid.appendChild(linhaGrid);
-        })
-    });
+        });
+    })
 };
 
-mostrarDadosGrid('todosusuarios');
+mostrarDadosGrid('todapessoa')
 
-const endpoint_tiposColab = `http://127.0.0.1:1880/tiposcolab`;
+const endpoint_tiposColab = `${servidor}tiposcolab`;
 fetch(endpoint_tiposColab)
 .then(res => res.json())
 .then(data => {
     fTipoColab.innerHTML = '';
     data.forEach((e) => {
         const option = document.createElement('option');
-        option.setAttribute("value", e.n_tipousuario_tipousuario);
-        option.textContent = e.s_desc_tipousuario;
+        option.setAttribute("value", e.n_tipopessoa_tipopessoa);
+        option.textContent = e.s_desc_tipopessoa;
         fTipoColab.appendChild(option);
     });
 })
 
 btnMostrar.addEventListener("click", () => {
-    mostrarDadosGrid('todosusuarios');
+    mostrarDadosGrid('todapessoa');
 });
 
 btnSearch.addEventListener("click", () => {
@@ -292,11 +292,11 @@ btnGravar.addEventListener("click", () => {
         });
 
         const dados = {
-            s_nome_usuario:fNome.value,
-            n_tipousuario_tipousuario:fTipoColab.value,
-            c_status_usuario:fStatus.value,
+            s_nome_pessoa:fNome.value,
+            n_tipopessoa_tipopessoa:fTipoColab.value,
+            c_status_pessoa:fStatus.value,
             numTelefones:numTels,
-            s_foto_usuario: imgFoto.getAttribute("src")
+            s_foto_pessoa: imgFoto.getAttribute("src")
         };
 
         const cabecalho = {
@@ -333,7 +333,7 @@ btnGravar.addEventListener("click", () => {
                 });
             }
         })
-        mostrarDadosGrid('todosusuarios');
+        mostrarDadosGrid('todapessoa');
     } else if (modoJanela == "e") {
         let endpointDelete = `${servidor}deletartelefones/${currentId}`;
         fetch(endpointDelete, {
@@ -355,12 +355,12 @@ btnGravar.addEventListener("click", () => {
         });
 
         const dados = {
-            s_nome_usuario:fNome.value,
-            n_tipousuario_tipousuario:fTipoColab.value,
-            c_status_usuario:fStatus.value,
+            s_nome_pessoa:fNome.value,
+            n_tipopessoa_tipopessoa:fTipoColab.value,
+            c_status_pessoa:fStatus.value,
             numTelefones:numTels,
-            s_foto_usuario: imgFoto.getAttribute("src")
-        }
+            s_foto_pessoa: imgFoto.getAttribute("src")
+        };
 
         let endpointUpdate = `${servidor}updatecolab/${currentId}`;
 
@@ -396,7 +396,7 @@ btnGravar.addEventListener("click", () => {
                 });
             }
         })
-        mostrarDadosGrid('todosusuarios');
+        mostrarDadosGrid('todapessoa');
     }
 
     novoColaborador.classList.add('ocultarPopup');
