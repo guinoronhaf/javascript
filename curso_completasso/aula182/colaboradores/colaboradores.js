@@ -72,9 +72,9 @@ const mostrarDadosGrid = (endpoint) => {
     const endpoint_todosColaboradores = `${servidor}${endpoint}`;
     fetch(endpoint_todosColaboradores)
     .then(res => res.json()) 
-    .then(data => {
+    .then(resu => {
         dadosGrid.innerHTML = '';
-        data.forEach((e) => {
+        resu.forEach((e) => {
             const linhaGrid = document.createElement('div');
             linhaGrid.setAttribute("class", "linhaGrid");
     
@@ -119,6 +119,7 @@ const mostrarDadosGrid = (endpoint) => {
                 }).then(res => {
                     if (res.status == 200) {
                         console.log('Status atualizado');
+                        mostrarDadosGrid('todapessoa');
                     } else {
                         console.log('erro');
                     }
@@ -144,11 +145,12 @@ const mostrarDadosGrid = (endpoint) => {
                 let endpoint = `${servidor}todapessoa/${id}`;
                 fetch(endpoint)
                 .then(res => res.json())
-                .then(data => {
-                    fNome.value = data[0].s_nome_pessoa;
-                    fTipoColab.value = data[0].n_tipopessoa_tipopessoa;
-                    fStatus.value = data[0].c_status_pessoa;
-                    imgFoto.setAttribute("src", data[0].s_foto_pessoa);
+                .then(d => {
+                    // console.log(d[0].s_foto_pessoa);
+                    fNome.value = d[0].s_nome_pessoa;
+                    fTipoColab.value = d[0].n_tipopessoa_tipopessoa;
+                    fStatus.value = d[0].c_status_pessoa;
+                    imgFoto.setAttribute("src", d[0].s_foto_pessoa); // o problema aqui é pq o campo não tava configurado como "mediumtext"
                     novoColaborador.classList.remove('ocultarPopup');
                 })
     
@@ -203,7 +205,7 @@ const mostrarDadosGrid = (endpoint) => {
     })
 };
 
-mostrarDadosGrid('todapessoa')
+mostrarDadosGrid('todapessoa');
 
 const endpoint_tiposColab = `${servidor}tiposcolab`;
 fetch(endpoint_tiposColab)
@@ -298,6 +300,8 @@ btnGravar.addEventListener("click", () => {
             numTelefones:numTels,
             s_foto_pessoa: imgFoto.getAttribute("src")
         };
+
+        console.log(dados)
 
         const cabecalho = {
             method: 'POST',
