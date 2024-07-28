@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClickPay | SignUp</title>
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/signup.css">
+    <script src="../script/signup.js" defer type="module"></script>
+</head>
+<body>
+    
+    <header>
+        <div>
+            <h1>ClickPay</h1>
+            <img src="../images/money.svg" alt="">
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="signupSection">
+            <div class="signupDiv">
+                <label for="iName">Name</label>
+                <input type="text" name="iName" id="iName" class="loginInput">
+            </div>
+            <div class="signupDiv">
+                <label for="iDate">Date of birth</label>
+                <input type="date" name="iDate" id="iDate" class="loginInput">
+            </div>
+            <div class="signupDiv">
+                <label for="iUser">Email</label>
+                <input type="text" name="iUser" id="iUser" class="loginInput">
+            </div>
+            <div class="signupDiv">
+                <label for="iPass">Password</label>
+                <div class="auxiliaryDiv">
+                    <input type="password" name="iPass" id="iPass" class="loginInput">
+                    <img src="../images/view.svg" alt="View password" title="View password" id="eyeImg" class="eyeImg">
+                </div>
+            </div>
+            <div class="signupDiv">
+                <label for="iPassCon">Confirm your password</label>
+                <div class="auxiliaryDiv">
+                    <input type="password" name="iPassCon" id="iPassCon" class="loginInput">
+                    <img src="../images/view.svg" alt="View password" title="View password" id="eyeImg" class="eyeImg">
+                </div>
+            </div>
+            <div class="signupButton">
+                <button id="signupBtn" class="signupBtn">Sign Up</button>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>

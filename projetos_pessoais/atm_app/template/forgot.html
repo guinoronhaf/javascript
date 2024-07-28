@@ -3,44 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ClickPay | Login</title>
+    <title>ClickPay | Update password</title>
     <link rel="stylesheet" href="../style/style.css">
-    <link rel="stylesheet" href="../style/login.css">
-    <script src="../script/login.js" type="module" defer></script>
+    <link rel="stylesheet" href="../style/forgot.css">
+    <script src="../script/forgot.js" defer type="module"></script>
 </head>
 <body>
-
+    
     <header>
         <div>
             <h1>ClickPay</h1>
             <img src="../images/money.svg" alt="">
         </div>
     </header>
-    
-    <main id="container" class="container">
 
-        <section class="loginSection">
-            <div class="loginDiv">
+    <main class="container">
+        <section class="fSection">
+            <div class="fDiv">
                 <label for="iUser">Email</label>
                 <input type="text" name="iUser" id="iUser" class="loginInput">
             </div>
-            <div class="loginDiv">
-                <label for="iPass">Password</label>
+            <div class="fDiv">
+                <label for="iNewPass">New password</label>
                 <div class="auxiliaryDiv">
-                    <input type="password" name="iPass" id="iPass" class="loginInput">
+                    <input type="password" name="iNewPass" id="iNewPass" class="loginInput">
                     <img src="../images/view.svg" alt="View password" title="View password" id="eyeImg" class="eyeImg">
                 </div>
             </div>
-            <div class="loginButton">
-                <button id="loginBtn" class="loginBtn">Login</button>
+            <div class="fButton">
+                <button id="fBtn" class="fBtn">Update Password</button>
             </div>
         </section>
-
-        <div class="userActions">
-            <p><a href="signup.html">Don't you have an account?</a></p>
-            <p><a href="forgot.html">Forgot your password?</a></p>
-        </div>
-
     </main>
 
 </body>

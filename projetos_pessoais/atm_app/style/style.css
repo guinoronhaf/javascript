@@ -8,4 +8,27 @@
 
 :root {
     --text: 'Nunito';
+    --blue: rgb(13, 115, 199);
+}
+
+body, html {
+    overflow: hidden;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: rgb(13, 115, 199);
+    width: 100vw;
+}
+
+header > div {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-family: var(--text);
+    width: 100%;
 }

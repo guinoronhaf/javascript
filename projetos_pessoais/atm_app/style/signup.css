@@ -1,6 +1,10 @@
-html, body {
+body, html {
     width: 100vw;
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     font-family: var(--text);
 }
 
@@ -14,11 +18,11 @@ html, body {
     gap: 10px;
 }
 
-.loginSection {
+.signupSection {
     display: flex;
     flex-direction: column;
     width: 90%;
-    height: 300px;
+    height: 500px;
     background-color: #fff;
     padding: 30px 20px;
     border-radius: 10px;
@@ -26,7 +30,7 @@ html, body {
     border: 2px solid rgb(13, 115, 199);
 }
 
-.loginDiv {
+.signupDiv {
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -65,14 +69,14 @@ input:focus {
     cursor: pointer;
 }
 
-.loginButton {
+.signupButton {
     display: flex;
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 30px;
     width:100%;
 }
 
-.loginBtn {
+.signupBtn {
     width: 50%;
     padding: 10px;
     border: none;
@@ -85,50 +89,12 @@ input:focus {
     transition-duration: .2s
 }
 
-.loginBtn:hover {
+.signupBtn:hover {
     filter: opacity(.6);
 }
 
-.userActions {
-    display: flex;
-    justify-content: space-between;
-    width: 90%;
-}
-
-a {
-    font-size: 0.8em;
-    transition-duration: .3s;
-    cursor: pointer;
-    color: grey !important;
-    text-decoration: none;
-    /* border-bottom: 2px solid rgb(13, 115, 199); */
-}
-
-a:hover {
-    color: black !important;
-    /* animation: borders 2s ease-in-out; */
-    /* border-bottom: 2px solid rgb(13, 115, 199); */
-}
-
-
-/* @keyframes borders {
-    0% {
-        border-bottom: 0px;
-    }
-
-    100% {
-        border-bottom: 2px solid rgb(13, 115, 199);
-    }
-} */
-
-
-
 @media (width >= 768px) {
-    .loginSection {
-        width: 400px;
-    }
-
-    .userActions {
+    .signupSection {
         width: 400px;
     }
 }
