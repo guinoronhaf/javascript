@@ -7,7 +7,8 @@ const db = require('./db');
 const cors = require('cors');
 const corsOptions = {
     origin: "http://127.0.0.1:5500",
-    optionsSuccessStatus: 200
+    optionsSuccessStatus: 200,
+    methods: ['GET', 'POST', 'PATCH', 'DELETE']
 };
 
 app.use(cors(corsOptions));
@@ -22,8 +23,19 @@ app.get('/all', async(req, res) => {
     res.json(result);
 });
 
+app.get('/checkuser/:e', async(req, res) => {
+    const email = req.params.e;
+    const result = await db.checkUser(email);
+    res.send(result);
+});
+
 app.post('/user', cors(corsOptions), async(req, res) => {
     await db.insertUser(req.body);
+    res.sendStatus(200);
+});
+
+app.patch('/updatepass', cors(corsOptions), async(req, res) => {
+    await db.updatePassword(req.body);
     res.sendStatus(200);
 });
 
