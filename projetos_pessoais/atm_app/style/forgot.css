@@ -33,19 +33,6 @@ html, body {
     color: #5c5959;
 }
 
-.loginInput {
-    padding: 8px;
-    border-radius: 5px;
-    border: none;
-    border-bottom: 2px solid rgb(13, 115, 199);
-    font-family: var(--text);
-    font-weight: 700;
-}
-
-input:focus {
-    outline: none;
-}
-
 .auxiliaryDiv {
     display: flex;
     align-items: center;

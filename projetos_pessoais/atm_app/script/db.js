@@ -7,8 +7,8 @@ const getUsers = async() => {
 };
 
 const insertUser = async(user) => {
-    const sql = 'INSERT INTO teste VALUES (NULL, ?, ?)';
-    const values = [user.email, user.password];
+    const sql = 'INSERT INTO users VALUES (NULL, ?, ?, ?, ?)';
+    const values = [user.name, user.email, user.password, user.date];
     await client.query(sql, values);
 };
 
