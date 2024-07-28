@@ -1,5 +1,3 @@
-import { hidePassword } from "./login.js";
-
 const eyeImg = [...document.querySelectorAll(".eyeImg")];
 const btnSignup = document.querySelector("signupBtn");
 

@@ -8,7 +8,7 @@ body, html {
     font-family: var(--text);
 }
 
-.container {
+.containerS {
     width: 100%;
     height: 100%;
     display: flex;
@@ -37,7 +37,7 @@ body, html {
     color: #5c5959;
 }
 
-.loginInput {
+.loginInputS {
     padding: 8px;
     border-radius: 5px;
     border: none;
@@ -50,7 +50,7 @@ input:focus {
     outline: none;
 }
 
-.auxiliaryDiv {
+.auxiliaryDivS {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -61,11 +61,11 @@ input:focus {
     border-bottom: 2px solid rgb(13, 115, 199);
 }
 
-.auxiliaryDiv > input {
+.auxiliaryDivS > input {
     border: none !important;
 }
 
-.eyeImg {
+.eyeImgS {
     cursor: pointer;
 }
 
